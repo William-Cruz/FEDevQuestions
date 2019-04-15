@@ -13,6 +13,17 @@ $(document).ready(function() {
 });
 
 // * Answer
+// I would use JS/jQuery chaining to run multiple jQuery methods on the same element within a single statement.
+    $(document).ready(function () {
+      $('.foo #bar').css({
+        'color': 'red',
+        'border': '1px solid blue',
+      }).text('new text!').click(function () {
+        $(this).attr('title', 'new title');
+        $(this).width('100px');
+      }).click();
+    });
+
 
 
 
@@ -39,6 +50,12 @@ $(document).ready(function() {
 
 
 // Answer
+// They're many ways to access a certain parts of the the dom you could use
+// .eq(3)
+function myFunction() {
+  var c = document.getElementsByClassName("element")[3];
+  c.style.backgroundColor = "yellow";
+}
 
 
 
@@ -55,6 +72,15 @@ $(document).ready(function() {
 
 
 // * Answer
+// I would put the repeated items in an array so I can more efficiently access them, sticking to the DRY principle.
+$(document).ready(function() {
+  var arr = ["foo", "bar", "baz", "bop"];
+  var str = " a";
+  for (i = 0; i < arr.length; i++) {console.log(arr[i]+str);
+
+  $(`li.${arr[i]+str}`).attr("title", `i am ${arr[i]}`);}
+
+});
 
 
 
@@ -101,6 +127,12 @@ var menuItems = [
 
 // * Answer
 
+function getResults(item) {
+  var results = [item.name,item.extras];
+  return results;
+}
+console.log(menuItems.map(getResults))
+
 
 
 
@@ -120,3 +152,6 @@ for (var i = 0; i <= 5; i++) {
 console.log('The next five days are ', dates.join(', '));
 
 // Answer
+
+// Making var i = 0 would include todays date and the statement reads "The next five days"
+// so changing var i = 1 would get the desired answer by starting with tomorrows date
